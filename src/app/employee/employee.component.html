@@ -1,0 +1,44 @@
+<span class="radioClass">Show : </span>
+
+<input type="radio" name="options" value="All"
+[(ngModel)]="selectedRadioButtonValue"
+(change)="onRadioButtonSelectionChange()" />
+<span class="radioClass">{{"All(" + All + ")"}}</span>
+
+<input name="options" type="radio" value="Male" 
+[(ngModel)]="selectedRadioButtonValue"
+(change)="onRadioButtonSelectionChange()" >
+<span class="radioClass">{{"Male(" + Male + ")"}}</span>
+
+<input name="options" type="radio" value="Female"
+[(ngModel)]="selectedRadioButtonValue" (change)="onRadioButtonSelectionChange()" >
+<span class="radioClass">{{"Female(" + Female + ")"}}</span>
+<input type="checkbox" value="list" ngModel="ListBox"
+(click)='IsChecked()'>
+<span>{{"ListName :: "+ListName}}</span>
+<div *ngIf="isTrue then thenblock else elseblock ">
+</div>
+<ng-template #thenblock>
+  <div >
+    <button (click)="ChangeValue()">insert</button>
+   </div> 
+</ng-template>
+<ng-template #elseblock>
+  <div >
+    <button (click)="ChangeValue()">Update</button>
+   </div> 
+</ng-template>
+<h1>Select DEGREE</h1>
+<select (change)='setDropDownValue($event)'>
+  <option value="">select</option>
+  <option value="BE">Btech</option>
+  <option value="DE">Degree</option>
+  <option value="BH">BPHARMA</option>
+</select>
+<div [ngSwitch]='dropDownValue'>
+  <h3 *ngSwitchCase="'BE'">Btech</h3>
+  <h3 *ngSwitchCase="'DE'">Degree</h3>
+  <h3 *ngSwitchCase="'BH'">BPHARMA</h3>
+  <h3 *ngSwitchDefault="">You have not selected any Degree</h3>
+
+</div>

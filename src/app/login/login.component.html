@@ -1,0 +1,36 @@
+<!-- <table #LoginForm="ngForm" (onsubmit)="CheckUser(LoginForm)">
+    <tr >
+        <td>Mobile No</td>
+        <td><input type="text"  ngModel></td>
+        </tr><tr>
+        <td>Password</td>
+        <td><input type="text" ngModel></td>
+    </tr>
+    <tr>
+        <td></td>
+        <button class="btn_btn_primary" >Submit</button>
+    </tr>
+</table> -->
+<div class="login-container">
+    <h2>Login</h2>
+    <form (ngSubmit)="CheckUser()" #loginForm="ngForm">
+      <div class="form-group login ">
+        <label for="MobileNumber">MobileNumber</label>
+        <input type="number" id="MobileNumber" name="MobileNumber" [(ngModel)]="formData.MobileNumber" required maxlength="10">
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" [(ngModel)]="formData.password" required minlength="4">
+      </div>
+      <button type="submit" [disabled]="!loginForm.valid">Login</button>
+    </form>
+    <div>
+      <p>Need To Register?Please Click Here
+        <a  routerLink= "/Register">Register</a>
+        <!-- <button  routerLink="/Register" class="btn btn-primary d-inline">Register</button> -->
+      </p>
+
+    </div>
+  </div>
+  
+  
