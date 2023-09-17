@@ -1,0 +1,14 @@
+<div>
+  <div><app-header></app-header></div>
+<div>
+<button [routerLink] = "['/employee']" >employee </button>
+<button [routerLink] = "['/Register']" >Register </button>
+<button [routerLink] = "['/employeeList']" >employee details</button>
+<button [routerLink]= "['/Students']">StudentsList</button>
+<a [routerLink]= "['/Login']">LoginDetails</a>
+<hr>
+</div>
+<div id="ApplicationBody">
+    <router-outlet></router-outlet>
+</div>
+<app-footer></app-footer></div>

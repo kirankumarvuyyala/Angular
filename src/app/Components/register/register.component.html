@@ -1,0 +1,101 @@
+<br/>
+<div class="container">
+  <div class="row">
+      <div class="form-bg">
+          <form #studentForm="ngForm" (ngSubmit)="RegisterStudent(studentForm)">
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h3 class="panel-title">Student Registration</h3>
+              </div>
+              <div class="panel-body">
+                
+                <div class="form-group">
+                  <label for="firstName">First Name</label>
+                  <input id="firstName" type="text" class="form-control" name="firstName"#firstName="ngModel" ngModel required pattern="^[a-zA-Z]+$" >
+                </div>
+                <div *ngIf="!firstName?.valid">Invalid First name </div>
+                
+                <div class="form-group">
+                  <label for="lastName">Last Name</label>
+                </div>
+                <div class="form-group">
+                  <input id="lastName" type="text" class="form-control" name="lastName" ngModel>
+                </div>
+                
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input id="email" type="text" class="form-control" name="email" ngModel required>
+                </div>
+                <div class="form-group">
+                  <label for="MobileNumber">MobileNumber</label>
+                  <input id="MobileNumber" type="text" class="form-control" name="MobileNumber" ngModel required>
+                </div>
+                <div class="form-group">
+                  <label for="Password">Password</label>
+                  <input id="Password" type="password" class="form-control" name="Password" ngModel required>
+                </div>
+                
+                <div class="form-group">
+                  <label for="Qualification">Qualification</label>
+                  <select id="Qualification" name="Qualification" ngModel class="form-control" required> --select--
+                    <option value="B.TECH">B.TECH</option>
+                    <option value="Degree">Degree</option>
+                    <option value="Msc">Msc</option>
+                    <option value="BParma">BParma</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                    <label class="radio-inline">Gender</label>
+                    <div class="form-control">
+                      <label class="radio-inline">
+                        <input type="radio" name="gender" value="male" [ngModel]="gender" checked>
+                        Male
+                      </label>
+                      <label class="radio-inline">
+                        <input type="radio" name="gender" value="female" [ngModel]="gender" >
+                        Female
+                      </label>
+                      <label class="radio-inline">
+                    <input type="radio" name="gender" value="others" [ngModel]="gender" /> 
+                    others 
+                </label>                 
+            </div>
+                  </div>
+                  <!-- <div class="form-group">
+                    <div class="form-control">
+                      <label class="checkbox-inline">
+                        <input type="checkbox" name="isAccept" [ngModel]="isAccept" disabled>Accept Terms & Conditions
+                      </label>
+                    </div>
+                  </div> -->
+         
+              <div class="panel-footer">
+                <button  type="submit" [disabled]="!studentForm.valid">Register</button>
+              </div>
+            </div>
+            </div>
+          </form>
+      </div>
+  </div>
+</div>
+<table  *ngIf="isAccept">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Email</th>
+            <th>firstName</th>
+            <th>LastName</th>
+            <th>Image</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor='let student of students'>
+            <td>{{student.id}}</td>
+            <td>{{student.email}}</td>
+            <td>{{student.first_name}}</td>
+            <td>{{student.last_name}}</td>
+            <td><img src="{{student.avatar}}" alt="IMG"></td>
+        </tr>
+    </tbody>
+</table>
+<br />

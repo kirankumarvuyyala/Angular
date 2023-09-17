@@ -1,0 +1,9 @@
+<ul class="items">
+    <li  *ngFor="let learn of Learnings" (click)="onSelected(learn)">
+        <span class="badge">{{learn.id}}</span>{{learn.name}}</li>
+</ul>
+<!-- <ul class="items">
+    <li *ngFor="let department of Learnings" >
+      <span class="badge">{{department.id}}</span> {{department.name}}
+    </li>
+</ul> -->
