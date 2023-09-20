@@ -9,19 +9,19 @@ import { WebRequestService } from 'src/app/web-request.service';
 })
 export class HeaderComponent {
 
-public IsLoged:boolean;
+public IsUserLoged:string;
 constructor(public _WebRequestService:WebRequestService){
  // this.IsLoged= window.sessionStorage.getItem("IsLoged");
- console.log(this._WebRequestService.isLoading);
- this.IsLoged=JSON.parse(window.sessionStorage.getItem("IsLoged")!);
- console.log(this.IsLoged);
+//  console.log(this._WebRequestService.IsUserLoged);
+ this.IsUserLoged=JSON.stringify(window.sessionStorage.getItem("IsUserLoged"));
+ console.log(this.IsUserLoged);
 
 }
 ngOnInIt(){
 // this.IsLoged=this._WebRequestService.isLoading$;
 }
 LogOut(){
-  this.IsLoged=false;
+  // this.IsUserLoged=false;
   this._WebRequestService.ToggleLogin(false);
   window.sessionStorage.clear();
 }

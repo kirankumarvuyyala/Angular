@@ -11,10 +11,9 @@ export class EmployeeComponent {
   constructor(private _router:Router){
 
   }
-  ngOnInit(){
-    if(!JSON.parse(window.sessionStorage.getItem("IsLoged")!))
-    {
-this._router.navigate(['/Login']);
+  ngOnInit() {
+    if (JSON.stringify(window.sessionStorage.getItem("IsUserLoged")) == 'null') {
+      this._router.navigate(['/Login']);
     }
   }
   public ListBox:boolean=false;

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-Employeelist',
@@ -6,6 +7,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./employee-list.component.css']
 })
 export class EmployeeListComponent {
+  constructor(private _router:Router){
+
+  }
+  ngOnInit() {
+    if (JSON.stringify(window.sessionStorage.getItem("IsUserLoged")) == 'null') {
+      this._router.navigate(['/Login']);
+    }
+  }
   selectedStudentCountRadioButton:string='All';
   ListName:string='EmployeeLists';
   Employees: any[] = [

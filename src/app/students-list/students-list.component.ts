@@ -16,18 +16,17 @@ export class StudentsListComponent {
   constructor(private _WebRequestService:WebRequestService,private _router:Router){
   }
   ngOnInit(){
-    if(window.sessionStorage.getItem("IsLoged")){
-    console.log('student lists');
-     this._WebRequestService.GetStudentsList()
-     .subscribe((data:any)=>
-     {
-      this.students=data
-    });
-  }
-  else
-  {
-    this._router.navigate(['/Login']);
-  }
+    if (window.sessionStorage.getItem("IsUserLoged") != null) {
+      this._WebRequestService.GetStudentsList()
+        .subscribe((data: any) => {
+          this.students = data.body;
+          console.log(data.headers.get('SessionId'));
+          console.log(data.headers.get('kk'));
+        });
+    }
+    else {
+      this._router.navigate(['/Login']);
+    }
   }
   AddNewStudents(){
 this._router.navigate(['/Register']);

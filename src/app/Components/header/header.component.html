@@ -1,3 +1,11 @@
-<div class="container text-right" *ngIf="_WebRequestService.isLoading">
+<div class="container text-right" *ngIf="_WebRequestService.IsUserLoged">
     <button (click)="LogOut()" routerLink="/Login" class="btn btn-primary d-inline">LOG OUT</button>
+</div>
+<div>
+    <button [routerLink] = "['/employee']" >employee </button>
+<button [routerLink] = "['/Register']" >Register </button>
+<button [routerLink] = "['/employeeList']" >employee details</button>
+<button [routerLink]= "['/Students']">StudentsList</button>
+<a [routerLink]= "['/Login']">LoginDetails</a>
+<hr />
 </div>
