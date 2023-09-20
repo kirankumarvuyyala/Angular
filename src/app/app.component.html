@@ -1,14 +1,23 @@
-<div>
-  <div><app-header></app-header></div>
-<div>
-<button [routerLink] = "['/employee']" >employee </button>
-<button [routerLink] = "['/Register']" >Register </button>
-<button [routerLink] = "['/employeeList']" >employee details</button>
-<button [routerLink]= "['/Students']">StudentsList</button>
-<a [routerLink]= "['/Login']">LoginDetails</a>
-<hr>
-</div>
-<div id="ApplicationBody">
+<!-- <body>
+  <header>
+
+  </header>
+  <main>
     <router-outlet></router-outlet>
+  </main>
+  <footer>
+    <app-footer></app-footer>
+  </footer>
+</body> -->
+<body>
+    <div id="divHeader">
+      <app-header></app-header>
+    </div>
+    <div id="divContent">
+    <router-outlet></router-outlet>
+    </div>
+    <div id="divPush"></div>
+<div id="divFooter">
+  <app-footer></app-footer>
 </div>
-<app-footer></app-footer></div>
+</body>

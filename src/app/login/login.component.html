@@ -11,18 +11,60 @@
         <button class="btn_btn_primary" >Submit</button>
     </tr>
 </table> -->
-<div class="login-container">
+<!-- <div class="login-container">
     <h2>Login</h2>
     <form (ngSubmit)="CheckUser()" #loginForm="ngForm">
-      <div class="form-group login ">
-        <label for="MobileNumber">MobileNumber</label>
-        <input type="number" id="MobileNumber" name="MobileNumber" [(ngModel)]="formData.MobileNumber" required maxlength="10">
+      <div class="form-group">
+        <label for="MobileNumber" >MobileNumber</label>
+        <input type="text"  class="form-control" id="MobileNumber" name="MobileNumber" [(ngModel)]="formData.MobileNumber" required maxlength="10">
       </div>
       <div class="form-group">
         <label for="password">Password:</label>
-        <input type="password" id="password" name="password" [(ngModel)]="formData.password" required minlength="4">
+        <input type="password" id="password" class="form-control"  name="password" [(ngModel)]="formData.password" required minlength="4">
       </div>
-      <button type="submit" [disabled]="!loginForm.valid">Login</button>
+      <div *ngIf="loginForm.invalid then thenblock else elseblock">
+      </div>
+      <ng-template #thenblock >
+        <button type="submit" [disabled]="!loginForm.valid" class="btn btn-danger"  >Login</button>
+      </ng-template >
+      <ng-template #elseblock>
+      <button type="submit" [disabled]="!loginForm.valid" class="btn btn-outline-success"  layout="row" layout-align="center center" style="min-height: 50px"  >Login</button>
+    </ng-template>
+    </form>
+    <div>
+      <p>Need To Register?Please Click Here
+        <a  routerLink= "/Register">Register</a>
+        <!-- <button  routerLink="/Register" class="btn btn-primary d-inline">Register</button> -->
+      <!-- </p>
+
+    </div>
+  </div> --> 
+  <div class="login-container">
+    <form   #loginForm="ngForm" (ngSubmit)="CheckUser(loginForm)" >
+      <div class="form-group">
+        <label for="MobileNumber" >MobileNumber</label>
+        <input type="text"  class="form-control" id="MobileNumber" name="MobileNumber" #MobileNumber="ngModel"
+         ngModel required maxlength="10" pattern="[789][0-9]{9}">
+      </div>
+      <div *ngIf="MobileNumber.errors&&MobileNumber.touched">
+        <small class="text-danger" *ngIf="MobileNumber.errors.required">Please Enter Mobile Number</small>
+        <small class="text-danger" *ngIf="MobileNumber.errors.pattern">Please Enter  valid Mobile Number</small>
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" class="form-control"  name="password" #Password="ngModel" ngModel  required minlength="4">
+      </div>
+      <div>
+      <small class="text-danger" *ngIf="Password.touched&&Password.invalid">please enter password</small>
+    </div>
+      <div *ngIf="loginForm.invalid then thenblock else elseblock">
+      </div>
+      <ng-template #thenblock >
+        <button type="submit" [disabled]="!loginForm.valid" class="btn btn-danger"  >Login</button>
+      </ng-template >
+      <ng-template #elseblock>
+      <button type="submit" [disabled]="!loginForm.valid" class="btn btn-outline-success"  layout="row" layout-align="center center" style="min-height: 30px"  >Login</button>
+    </ng-template>
     </form>
     <div>
       <p>Need To Register?Please Click Here

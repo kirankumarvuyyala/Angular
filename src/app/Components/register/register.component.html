@@ -11,38 +11,60 @@
                 
                 <div class="form-group">
                   <label for="firstName">First Name</label>
-                  <input id="firstName" type="text" class="form-control" name="firstName"#firstName="ngModel" ngModel required pattern="^[a-zA-Z]+$" >
-                </div>
-                <div *ngIf="!firstName?.valid">Invalid First name </div>
-                
+                  <input id="firstName" type="text" class="form-control" name="firstName"#firstName="ngModel" ngModel 
+                   [class.is-invalid]="firstName.touched&&firstName.invalid" required pattern="^[a-zA-Z]+$" maxlength="10" >
+                </div >
+                <div *ngIf="firstName.errors&&(firstName.touched)">
+                  <small class="text-danger" *ngIf='firstName.errors.required'>Please Enter FirstName</small>
+                  <small class="text-danger" *ngIf='firstName.errors.pattern'>Please Valid FirstName</small>
+                </div>                
                 <div class="form-group">
                   <label for="lastName">Last Name</label>
+                  <input id="lastName" type="text" class="form-control" name="lastName" #lastName="ngModel" 
+                  ngModel required pattern="[a-zA-Z]{5,}" maxlength="10">
                 </div>
-                <div class="form-group">
-                  <input id="lastName" type="text" class="form-control" name="lastName" ngModel>
-                </div>
-                
+                <div *ngIf="lastName.errors&&(lastName.touched)">
+                  <small class="text-danger" *ngIf='lastName.errors.required'>Please Enter lastName</small>
+                  <small class="text-danger" *ngIf='lastName.errors.pattern'>Please enter Valid lastName and It Must be 5 letters</small>
+                </div> 
                 <div class="form-group">
                   <label for="email">Email</label>
-                  <input id="email" type="text" class="form-control" name="email" ngModel required>
+                  <input id="email" type="text" class="form-control" name="email" ngModel required #email="ngModel">
                 </div>
+                <div *ngIf="email.errors&&(email.touched)">
+                  <small class="text-danger" *ngIf='lastName.errors.required'>Please Enter email</small>
+                </div> 
                 <div class="form-group">
                   <label for="MobileNumber">MobileNumber</label>
-                  <input id="MobileNumber" type="text" class="form-control" name="MobileNumber" ngModel required>
+                  <input id="MobileNumber" type="text" class="form-control" name="MobileNumber" ngModel required maxlength="10" #MobileNumber="ngModel"
+                   (keypress)="CheckIsNumber($event)" pattern="[987][0-9]{9}">
+                </div>
+                <div *ngIf="MobileNumber.errors&&MobileNumber.touched">
+                  <small class="text-danger" *ngIf="MobileNumber.errors.required">Please enter MobileNumber</small>
+                  <small class="text-danger" *ngIf="MobileNumber.errors.pattern">Please Enter valid MobileNumber</small>
                 </div>
                 <div class="form-group">
                   <label for="Password">Password</label>
-                  <input id="Password" type="password" class="form-control" name="Password" ngModel required>
+                  <input id="Password" type="{{Show?'text':'Password'}}" class="form-control" name="Password"
+                  #password="ngModel"  ngModel required maxlength="10" pattern="[a-zA-Z]{8,}">
+                  <input type="checkbox" name="ShowPassword" (change)="ShowPassword()"><label>Show Password</label>
+                </div>
+                <div *ngIf="password.errors&&password.touched">
+                  <small class="text-danger" *ngIf="password.errors.required">please Enter Password</small>
+                  <small class="text-danger" *ngIf="password.errors.pattern">please Enter valid  Password</small>
                 </div>
                 
                 <div class="form-group">
                   <label for="Qualification">Qualification</label>
-                  <select id="Qualification" name="Qualification" ngModel class="form-control" required> --select--
+                  <select id="Qualification" name="Qualification" #Qualification="ngModel"  ngModel class="form-control" required> --select--
                     <option value="B.TECH">B.TECH</option>
                     <option value="Degree">Degree</option>
                     <option value="Msc">Msc</option>
                     <option value="BParma">BParma</option>
                   </select>
+                </div>
+                <div *ngIf="Qualification.errors&&Qualification.touched">
+                  <small  class="text-danger" *ngIf="Qualification.errors.required">Please select any Qualification </small>
                 </div>
                 <div class="form-group">
                     <label class="radio-inline">Gender</label>

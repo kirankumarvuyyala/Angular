@@ -9,6 +9,9 @@ import { RegisterComponent } from './Components/register/register.component';
 import { LearningsComponent } from './Components/learnings/learnings.component';
 import { LearnDetailsComponent } from './Components/learn-details/learn-details.component';
 import { OverViewComponent } from './Components/over-view/over-view.component';
+import { LifeCycleComponent } from './Components/life-cycle/life-cycle.component';
+import { HeaderComponent } from './Components/header/header.component';
+import { FooterComponent } from './Components/footer/footer.component';
 const routes: Routes = [
   {
     path:'employee',component:EmployeeComponent
@@ -32,7 +35,9 @@ const routes: Routes = [
     path:'Learn',component:LearningsComponent
   },
   {
-    path:'Learn/:id',component:LearnDetailsComponent,children:[{path:'OverView',component:OverViewComponent},]
+    path:'Learn/:id',component:LearnDetailsComponent,
+    children:[{path:'OverView',component:OverViewComponent},
+  {path:'LifeCycles',component:LifeCycleComponent},]
   },
   {
     path:'**',component:WildcardRouteComponent
@@ -43,4 +48,14 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule { 
+
+}
+export const UserComponents = [
+  EmployeeComponent, EmployeeListComponent,
+  LoginComponent, StudentsListComponent,
+  RegisterComponent, LearningsComponent,
+  LearnDetailsComponent, LifeCycleComponent,
+  OverViewComponent, WildcardRouteComponent,
+  HeaderComponent, FooterComponent
+                                ]

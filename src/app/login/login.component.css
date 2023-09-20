@@ -14,6 +14,10 @@ th{
     border: 1px solid #369;
     padding:5px;
 }
-.login{
-    display:flexbox;
-}
+.login-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 1px ;
+  }

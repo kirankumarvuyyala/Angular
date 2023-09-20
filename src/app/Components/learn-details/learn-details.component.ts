@@ -1,6 +1,7 @@
 import { parseHostBindings } from '@angular/compiler';
 import { Component } from '@angular/core';
-import { ActivatedRoute,ParamMap,Router} from '@angular/router';
+import { ActivatedRoute,ParamMap} from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-learn-details',
@@ -23,7 +24,6 @@ export class LearnDetailsComponent {
   });
   }
   BackClick(){
-    console.log('clicked');
     this.router.navigate(['/Learn']);
   }
   NextClick(){
@@ -38,5 +38,8 @@ this.router.navigate(['/Learn',PreID]);
   }
   OverviewClick(){
     this.router.navigate(['OverView'],{relativeTo:this.route})
+  }
+  LifeCyclesClick(){
+    this.router.navigate(['LifeCycles'],{relativeTo:this.route})
   }
 }
