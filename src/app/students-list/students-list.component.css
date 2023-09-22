@@ -3,6 +3,9 @@ table {
     font-family: Arial, Helvetica, sans-serif;
     font-size: large;
     border-collapse: collapse;
+    align-items: center;
+    align-content: center;
+    height: 80%;
 }
 
 td {
@@ -13,8 +16,10 @@ td {
 th{
     border: 1px solid #369;
     padding:5px;
+    background-color:honeydew;
 }
-#Addnew{
-    align-items: right;
-    
+
+.StudentsList{
+    justify-content: center;
+    align-items: center;
 }

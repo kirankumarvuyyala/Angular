@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { HttpResponse } from '@angular/common/http';
+import { CommonService } from '../Service/common.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,9 @@ export class LoginComponent {
   //   MobileNumber: '',
   //   password: ''
   // };
-  constructor(private _WebRequestService:WebRequestService,private _router:Router){
+  showPassword:boolean=false;
+  constructor(private _WebRequestService:WebRequestService,private _router:Router
+    ,private _CommonService:CommonService){
     window.sessionStorage.clear();
     _WebRequestService.IsUserLoged=false;
 
@@ -30,12 +33,13 @@ export class LoginComponent {
 
           Swal.fire('LoginSuccess', 'success');
           console.log('Valid USer');
-          this._WebRequestService.ToggleLogin(true);
-          this._router.navigate(['/Students']);
           let SessionId = response.headers.get('SessionId');
+          this._WebRequestService.ToggleLogin(SessionId);
+          this._router.navigate(['/Students']);
           window.sessionStorage.setItem("IsUserLoged", SessionId);
           window.sessionStorage.setItem("KK", response.headers.get('kk'))
           //  console.log(response.headers.get('SessionId'));
+          this._WebRequestService.hide();
         }
         else {
           Swal.fire('LoginFail', 'fail');
@@ -48,6 +52,12 @@ export class LoginComponent {
 
       }
     })
+  }
+  checkIsNumber(eve):boolean{
+    return this._CommonService.IsNumber(eve);
+  }
+  ShowPassword(){
+this.showPassword=!this.showPassword;
   }
 }
 

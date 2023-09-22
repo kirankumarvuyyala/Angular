@@ -1,4 +1,4 @@
-<div class="container text-right" *ngIf="_WebRequestService.IsUserLoged">
+<div class="container text-right" *ngIf="_WebRequestService.isLoading$|async">
     <button (click)="LogOut()" routerLink="/Login" class="btn btn-primary d-inline">LOG OUT</button>
 </div>
 <div>

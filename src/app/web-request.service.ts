@@ -13,6 +13,8 @@ PostUrl:string='http://localhost:64790/api/Selfcare/InsertUsers';
 LoginUrl:string='http://localhost:64790/api/Selfcare/LoginUser';
 pageNumber:number=1;
 public IsUserLoged:boolean;
+private isLoading$$=new  BehaviorSubject<boolean>(false);
+isLoading$=this.isLoading$$.asObservable();
   constructor( public http:HttpClient) { 
     if(JSON.parse(window.sessionStorage.getItem("IsLoged")!))
     {
@@ -32,10 +34,7 @@ public IsUserLoged:boolean;
    return this.http.get(this.Geturl,{headers:headers,observe:'response'});
 
   }
-  private isLoading$$ = false;
-
-
-  ToggleLogin(IsLoged:boolean){
+    ToggleLogin(IsLoged:boolean){
     this.IsUserLoged=IsLoged;
   }
   getStudentsFrmUrl(){
@@ -48,5 +47,11 @@ public IsUserLoged:boolean;
 }
 checkUser(postBody:any){
   return this.http.post(this.LoginUrl,postBody,{observe:'response'})
+}
+show(){
+this.isLoading$$.next(true);
+}
+hide(){
+  this.isLoading$$.next(false);
 }
 }
