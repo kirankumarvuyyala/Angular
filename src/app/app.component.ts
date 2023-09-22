@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { WebRequestService } from './web-request.service';
 
 @Component({
   selector: 'app-root',
@@ -10,5 +11,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class AppComponent {
   title = 'project1';
-  
+  isLoading;
+  constructor(public _webRequest:WebRequestService){
+  }
 }

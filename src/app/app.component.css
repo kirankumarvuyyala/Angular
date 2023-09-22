@@ -16,32 +16,32 @@
   }
       min-height: 80%; 
     /* height: auto !important; /*Cause footer to stick to bottom in IE 6*/
-    /* height: 80%;  */ */
+    /* height: 80%;  */
   /* main {
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
     flex: auto;
   }  */
-
+html{
+    overflow: hidden;
+}
 
  body 
 { 
-    height: 100%; 
-    overflow: none;
+    height: 1000px; 
+    overflow: hidden;
 } 
 
 #divHeader
 {
     height: 100px;
-    position: fixed;
-    width: 100%;
-    background-color: #49a5f1;  
+    /* position: fixed; */
+    width: 100%; 
+    flex: none;
 }
 
 #divContent
 {
-
-    min-height: 50%;
     margin: 0 auto -100px; /*Allow for footer height*/
     vertical-align:bottom;
     overflow-y: scroll;
@@ -52,5 +52,27 @@
 
 #divFooter, #divPush
 {
-    height: 100px; /*Push must be same height as Footer */
+    flex: none;
+    height: 50px; /*Push must be same height as Footer */
+}
+om_loader_card {
+  position: fixed;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 9999999;
+  opacity: 0.7;
+}
+gif_loader {
+  border-width: 0px;
+  position: fixed;
+  padding: 20px;
+  background-color: #FFFFFF;
+  font-size: 30px;
+  left: 40%;
+  top: 40%;
+  border-radius: 50px;
 }

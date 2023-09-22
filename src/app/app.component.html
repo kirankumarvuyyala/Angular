@@ -10,14 +10,36 @@
   </footer>
 </body> -->
 <body>
-    <div id="divHeader">
-      <app-header></app-header>
+  <div id="divHeader">
+    <app-header></app-header>
+  </div>
+  <div id="divContent">
+    <!-- <div *ngIf="isLoading|async">
+      <p>please Wait..</p>
+    </div> -->
+    <!-- <div class="om_loader_wrapper" *ngIf="_webRequest.isLoading$|async then Loader else content">
+      </div>
+      <ng-template #Loader>
+      <div class="om_loader_card">
+          <div class="gif_loader">
+              <img src="assets/Image/loader.gif" width="60px" alt="" />
+          </div>
+      </div>
+    </ng-template>
+<ng-template #content>
+  <router-outlet></router-outlet>
+</ng-template> -->
+<div class="om_loader_wrapper" *ngIf="_webRequest.isLoading$|async">
+  <div class="om_loader_card">
+    <div class="gif_loader">
+        <img src="assets/Image/loader.gif" width="60px" alt="" />
     </div>
-    <div id="divContent">
+  </div>
+  </div>
     <router-outlet></router-outlet>
-    </div>
-    <div id="divPush"></div>
-<div id="divFooter">
-  <app-footer></app-footer>
-</div>
+  </div>
+  <div id="divPush"></div>
+  <div id="divFooter">
+    <app-footer></app-footer>
+  </div>
 </body>

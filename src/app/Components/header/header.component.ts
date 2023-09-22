@@ -22,7 +22,7 @@ ngOnInIt(){
 }
 LogOut(){
   // this.IsUserLoged=false;
-  this._WebRequestService.ToggleLogin(false);
+  this._WebRequestService.ToggleLogin(null);
   window.sessionStorage.clear();
 }
 }

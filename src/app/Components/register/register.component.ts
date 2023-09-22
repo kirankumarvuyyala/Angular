@@ -3,6 +3,8 @@ import { NgForm } from '@angular/forms';
 import { WebRequestService } from 'src/app/web-request.service';
 import { Router } from '@angular/router';
 import { HttpHeaders } from '@angular/common/http';
+import{CommonService} from 'src/app/Service/common.service'
+
 
 @Component({
   selector: 'app-register',
@@ -18,7 +20,7 @@ export class RegisterComponent {
   Show:boolean=false;
    
 
-  constructor(private _WebRequestService:WebRequestService,private router:Router){
+  constructor(private _WebRequestService:WebRequestService,private router:Router,private _CommonService:CommonService){
 
   }
   ngOnInit(){
@@ -36,9 +38,9 @@ export class RegisterComponent {
     this._WebRequestService.UpdateStudents(studentForm.value).subscribe({
       next: (response: any) => {
         if (response =='1'|| response) {
- console.log('suc');
- alert('successfully Inserted');
- this.router.navigate(['/Students']);
+         console.log('suc');
+            alert('successfully Inserted');
+                this.router.navigate(['/Students']);
         } else {
           console.log('fail');
         }
@@ -50,11 +52,8 @@ export class RegisterComponent {
   } catch (error: any) {
     console.log('catch');
   }
-  CheckIsNumber(eve){
-    var ASCIICode = (eve.which) ? eve.which : eve.keyCode
-    if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
-        return false;
-    return true;
+  CheckIsNumber(eve):boolean{
+    return this._CommonService.IsNumber(eve);
   }
   ShowPassword(){
     this.Show=!this.Show;

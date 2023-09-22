@@ -44,7 +44,7 @@
       <div class="form-group">
         <label for="MobileNumber" >MobileNumber</label>
         <input type="text"  class="form-control" id="MobileNumber" name="MobileNumber" #MobileNumber="ngModel"
-         ngModel required maxlength="10" pattern="[789][0-9]{9}">
+         ngModel required maxlength="10" pattern="[789][0-9]{9}" inputmode="numeric" (keypress)="checkIsNumber($event)"  >
       </div>
       <div *ngIf="MobileNumber.errors&&MobileNumber.touched">
         <small class="text-danger" *ngIf="MobileNumber.errors.required">Please Enter Mobile Number</small>
@@ -52,7 +52,8 @@
       </div>
       <div class="form-group">
         <label for="password">Password:</label>
-        <input type="password" id="password" class="form-control"  name="password" #Password="ngModel" ngModel  required minlength="4">
+        <input type="{{showPassword?'text':'password'}}" id="password" class="form-control"  name="password" #Password="ngModel" ngModel  required maxlength="10">
+        <input type="checkbox" (change)="ShowPassword()">
       </div>
       <div>
       <small class="text-danger" *ngIf="Password.touched&&Password.invalid">please enter password</small>
